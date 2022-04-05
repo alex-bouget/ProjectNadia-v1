@@ -1,5 +1,8 @@
 <?php
 
+include __DIR__."/private/mysqli_connect.php";
+include __DIR__."/gigly.php";
+
 class MyDB
 {
 
@@ -57,7 +60,7 @@ class MyDB
                     [
                         crypt(
                             "root",
-                            json_decode(file_get_contents(__DIR__ . "/client/properties.json"), true)["AccountSalt"]
+                            get_properties("AccountSalt")
                         )
                     ] // ADMIN FIRST PASSWORD
                 );
@@ -67,13 +70,14 @@ class MyDB
 
     function __construct()
     {
+        global $mysqli_account;
         $this->sqlite3 = false;
         if (!$this->sqlite3) {
             $this->connection = mysqli_connect(
-                "mysql-gigly.alwaysdata.net",
-                "gigly",
-                "DqjMe6NGF5j55eM",
-                'gigly_db'
+                $mysqli_account[0],
+                $mysqli_account[1],
+                $mysqli_account[2],
+                $mysqli_account[3]
             );
             $query = mysqli_query($this->connection, 'select * from Gigly_Right');
             if (!$query) {

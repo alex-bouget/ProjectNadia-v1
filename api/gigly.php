@@ -1,6 +1,7 @@
 <?php
 function get_properties($key) {
-    return json_decode(file_get_contents("properties.json"), true)[$key];
+    global $properties;
+    return $properties[$key];
 }
 
 function create_token($length) {

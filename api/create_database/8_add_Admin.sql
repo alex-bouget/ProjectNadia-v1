@@ -8,7 +8,7 @@ INSERT INTO Gigly_Account (
     )
 VALUES (
         'AdminFirstRoot1',
-        'Utopia',
+        'GiglyAdmin',
         ?,
         '',
         '',

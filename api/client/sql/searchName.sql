@@ -1,3 +1,3 @@
 SELECT G_Token, Username
-FROM Gigly_Account
+FROM Account
 WHERE LOWER(Username) LIKE LOWER(?)

@@ -3,7 +3,7 @@ CREATE TABLE Account(
    Username VARCHAR(50)  NOT NULL,
    Password VARCHAR(50)  NOT NULL,
    A_Token CHAR(60) ,
-   A_Death DATETIME2,
+   A_Death DATETIME,
    R_Id INT NOT NULL,
    PRIMARY KEY(G_Token),
    UNIQUE(Username),

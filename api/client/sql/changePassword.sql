@@ -1,3 +1,3 @@
-UPDATE Gigly_Account
+UPDATE Account
 SET Password = ?
 WHERE G_Token = ?

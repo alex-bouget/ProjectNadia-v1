@@ -1,6 +1,7 @@
 <?php
 
-include_once "../database.php";
+include_once __DIR__ . "/../database.php";
+include_once __DIR__ . "/../private/properties.php";
 
 class AccountAPI
 {
@@ -61,6 +62,15 @@ class AccountAPI
 
     public function create_account($username, $password)
     {
+        $res = $this->_Account_file->decode_result(
+            $this->_Account_file->execute(
+                file_get_contents(__DIR__ . "/sql/get_username.sql"),
+                [$username]
+            )
+        );
+        if ($res != 0) {
+            return json_encode(array("Error" => "Account already exist"));
+        }
         $params = array(
             $this->get_token($this->_T_length, "GToken"),
             $username,
@@ -188,12 +198,12 @@ class AccountAPI
     {
         $d = array();
         foreach ($this->_Account_file->decode_result(
-                $this->_Account_file->execute(
-                    file_get_contents(__DIR__ . "/sql/searchName.sql"),
-                    ["%" . $username . "%"]
-                )
-            ) as $value) {
-                $d[$value[1]] = $value[0];
+            $this->_Account_file->execute(
+                file_get_contents(__DIR__ . "/sql/searchName.sql"),
+                ["%" . $username . "%"]
+            )
+        ) as $value) {
+            $d[$value[1]] = $value[0];
         }
         return json_encode($d);
     }

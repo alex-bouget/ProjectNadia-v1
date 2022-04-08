@@ -2,7 +2,7 @@ CREATE TABLE App_Account(
    A_Id VARCHAR(25) ,
    G_Token CHAR(15) ,
    A_Token CHAR(60) ,
-   A_Death DATETIME2,
+   A_Death DATETIME,
    R_Id INT NOT NULL,
    PRIMARY KEY(A_Id, G_Token),
    UNIQUE(A_Token),

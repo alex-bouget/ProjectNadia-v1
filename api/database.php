@@ -1,7 +1,7 @@
 <?php
 
-include __DIR__."/private/mysqli_connect.php";
-include __DIR__."/gigly.php";
+include_once __DIR__ . "/private/mysqli_connect.php";
+include_once __DIR__ . "/gigly.php";
 
 class MyDB
 {

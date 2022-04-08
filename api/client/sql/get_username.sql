@@ -1,3 +1,3 @@
 SELECT *
-FROM Gigly_Account
+FROM Account
 WHERE Username = ?

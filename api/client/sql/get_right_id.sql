@@ -1,3 +1,3 @@
 SELECT R_Id
-FROM Gigly_Right
+FROM GRight
 WHERE Name = ?

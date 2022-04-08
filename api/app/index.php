@@ -10,7 +10,10 @@ header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 header("Access-Control-Allow-Origin: null");
 $RCJS = "ReturnSystem.json";
-$function_included = array("../database.php", "../gigly.php");
+$function_included = array(
+    __DIR__ . "../database.php",
+    __DIR__ . "../gigly.php"
+);
 
 error_reporting(E_ERROR);
 foreach ($function_included as $value) {

@@ -1,4 +1,4 @@
-INSERT INTO Gigly_Account (
+INSERT INTO Account (
         G_Token,
         Username,
         Password,
@@ -10,11 +10,11 @@ VALUES (
         'AdminFirstRoot1',
         'GiglyAdmin',
         ?,
-        '',
+        'kopsriovezvu',
         '',
         (
             select R_Id
-            from Gigly_Right
+            from GRight
             where Name = 'Admin'
         )
     )

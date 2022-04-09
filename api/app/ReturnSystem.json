@@ -1,0 +1,12 @@
+{
+    "GetTempToken": {
+        "GET": {
+            "temp": "200"
+        },
+        "POST": [
+            "appKey",
+            "appSecret"
+        ],
+        "PHP_function": ""
+    }
+}

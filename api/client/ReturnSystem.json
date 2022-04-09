@@ -1,0 +1,97 @@
+{
+    "CreateAccount": {
+        "GET": {
+            "accounts": "202"
+        },
+        "POST": [
+            "Username",
+            "Password"
+        ],
+        "__comment": "mail-address",
+        "PHP_function": "create_account"
+    },
+    "AutoConnectAccount": {
+        "GET": {
+            "accounts": "204"
+        },
+        "POST": [
+            "Username",
+            "A-Token"
+        ],
+        "PHP_function": "autoconnect"
+    },
+    "ConnectAccount": {
+        "GET": {
+            "accounts": "200"
+        },
+        "POST": [
+            "Username",
+            "Password"
+        ],
+        "PHP_function": "connect"
+    },
+    "ChangePassword": {
+        "GET": {
+            "account": "206"
+        },
+        "POST": [
+            "Username",
+            "old_password",
+            "new_password"
+        ],
+        "PHP_function": "change_pass"
+    },
+    "IfPrincipalServer": {
+        "GET": {
+            "IfPrincipalServer": "200"
+        },
+        "POST": [],
+        "PHP_function": "GetServerId"
+    },
+    "Lang": {
+        "GET": {
+            "Language": "200"
+        },
+        "POST": [],
+        "PHP_function": "Lang"
+    },
+    "GetImage": {
+        "GET": {
+            "img": "200"
+        },
+        "POST": [
+            "Token"
+        ],
+        "PHP_function": "Get_image"
+    },
+    "GetName": {
+        "GET": {
+            "name": "200"
+        },
+        "POST": [
+            "Token"
+       ],
+       "PHP_function": "Get_name"
+    },
+    "SearchByName": {
+        "GET": {
+            "search": "200"
+        },
+        "POST": [
+            "Username"
+        ],
+        "PHP_function": "Search_name"
+    },
+    "SendImage": {
+        "GET": {
+            "img": "202"
+        },
+        "POST": [
+            "Token",
+            "A-Token",
+            "Img"
+        ],
+        "PHP_function": "ChangeImage"
+
+    }
+}

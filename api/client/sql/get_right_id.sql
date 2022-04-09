@@ -1,0 +1,3 @@
+SELECT R_Id
+FROM GRight
+WHERE Name = ?

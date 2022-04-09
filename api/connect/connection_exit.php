@@ -1,7 +1,7 @@
 <?php
 
 error_reporting(E_ERROR);
-include __DIR__ . "/client/AccountAPI.php";
+include __DIR__ . "/../client/AccountAPI.php";
 
 $api = new AccountAPI();
 

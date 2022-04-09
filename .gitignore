@@ -1,6 +1,6 @@
 private/
 
-api/app/page/connect/*
-!api/app/page/connect/README.md
-api/app/page/create/*
-!api/app/page/create/README.md
+app/page/connect/*
+!app/page/connect/README.md
+app/page/create/*
+!app/page/create/README.md

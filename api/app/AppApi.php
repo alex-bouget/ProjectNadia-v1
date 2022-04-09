@@ -14,8 +14,8 @@ class AppAPI
 
     protected function TestConnection($userToken, $Atoken)
     {
-        $user = $this->_PartyFile->decode_result(
-            $this->_PartyFile->execute(
+        $user = $this->_Api->decode_result(
+            $this->_Api->execute(
                 file_get_contents(__DIR__ . "/../client/sql/connection_token.sql"),
                 [$userToken, $Atoken]
             )
@@ -29,8 +29,8 @@ class AppAPI
     private function get_token($length, $token_name)
     {
         $token = create_token($length);
-        $res = $this->_PartyFile->decode_result(
-            $this->_PartyFile->execute(
+        $res = $this->_Api->decode_result(
+            $this->_Api->execute(
                 file_get_contents(__DIR__ . "/sql/get_" . $token_name . ".sql"),
                 [$token]
             )
@@ -45,9 +45,10 @@ class AppAPI
         $res = $this->_Api->decode_result(
             $this->_Api->execute(
                 file_get_contents(__DIR__ . "/sql/have_account.sql"),
-                [$GToken, $AppId]
+                [$AppId, $GToken]
             )
         );
+        var_dump($res);
         return (count($res) == 1)?$res[0]:false;
     }
 
@@ -73,15 +74,15 @@ class AppAPI
             $description,
             $userToken
         );
-
         $this->_Api->execute(
             file_get_contents(__DIR__ . "/sql/add_app.sql"),
-            [$params]
+            $params
         );
+        $this->addAccount($params[0], $userToken, $AToken, "Admin");
         return json_encode(array("AppId" => $params[0], "Secret" => $params[1]));
     }
 
-    public function addAccount($AppId, $userToken, $AToken) {
+    public function addAccount($AppId, $userToken, $AToken, $right="User") {
         $user = $this->TestConnection($userToken, $AToken);
         if (is_string($user)) {
             return $user;
@@ -90,12 +91,13 @@ class AppAPI
             $AppId,
             $userToken,
             $this->get_token(60, "AToken"),
-            date('Y-m-d', time() + 604800)
+            date('Y-m-d', time() + 604800),
+            $right
         );
 
         $this->_Api->execute(
             file_get_contents(__DIR__ . "/sql/add_account.sql"),
-            [$params]
+            $params
         );
         return json_encode(array(
             "Token" => $params[1],

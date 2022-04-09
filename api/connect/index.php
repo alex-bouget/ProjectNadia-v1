@@ -76,7 +76,6 @@ if (!isset($_GET["APPID"]) || !isset($_GET["tempToken"]) || !isset($_GET["URI"])
             <?php } ?>
         </div>
     </div>
-    <script src="Site/js/connection.js"></script>
 </body>
 
 </html>

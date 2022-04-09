@@ -24,7 +24,7 @@ if (!$api2->connect_account($_POST["UserName"], $_POST["AToken"], "Token")) { ?>
 $result = json_decode($api->addAccount($_POST["APPID"], $_POST["Token"], $_POST["AToken"]), true);
 ?>
 
-<form method="GET" action=<?php echo urldecode($_POST["URI"]); ?> id="formul">
+<form method="POST" action=<?php echo urldecode($_POST["URI"]); ?> id="formul">
     <input type="hidden" value=<?php echo "${result["Token"]}"; ?> name="UserToken">
     <input type="hidden" value=<?php echo "${result["A-Token"]}"; ?> name="AToken">
     <input type="hidden" value=<?php echo "${_POST["UserName"]}"; ?> name="UserName">

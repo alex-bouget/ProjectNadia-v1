@@ -42,7 +42,7 @@ if (is_bool($result) || $result == null) { ?>
         <input type="submit" value="Refuse">
     </form>
 <?php } else { ?>
-    <form method="GET" action=<?php echo urldecode($_POST["URI"]); ?> id="formul">
+    <form method="POST" action=<?php echo urldecode($_POST["URI"]); ?> id="formul">
         <input type="hidden" value=<?php echo "${result[0]}"; ?> name="UserToken">
         <input type="hidden" value=<?php echo "${result[1]}"; ?> name="AToken">
         <input type="hidden" value=<?php echo "${result[2]}"; ?> name="UserName">

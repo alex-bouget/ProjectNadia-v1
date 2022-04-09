@@ -49,5 +49,5 @@ function Get_name()
 function Search_name()
 {
     global $api;
-    return $api->SearchName($_POST["Username"]);
+    return $api->SearchName($_POST["Username"], "");
 }

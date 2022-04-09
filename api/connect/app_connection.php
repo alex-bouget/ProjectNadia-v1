@@ -33,12 +33,12 @@ $api2 = new AccountAPI();
         exit();
     }
 
-    $result = $api->have_account($_POST["Token"], $_POST["APPID"]);
+    $result = json_decode($api->have_account($_POST["Token"], $_POST["APPID"]), true);
 
-    if (is_bool($result) || $result == null) { ?>
+    if (isset($result["Error"])) { ?>
         <h1>App Authorize</h1>
         <br>
-        <p><?php echo $api->getAppName($_POST["APPID"]); ?> want to use your nadia account like connection</p>
+        <p><?php echo json_decode($api->getAppName($_POST["APPID"]), true)["Name"]; ?> want to use your nadia account like connection</p>
         <form method="POST" action="addAppAccount.php">
             <input type="hidden" value=<?php echo "${_POST["APPID"]}"; ?> name="APPID">
             <input type="hidden" value=<?php echo "${_POST["tempToken"]}"; ?> name="tempToken">

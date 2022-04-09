@@ -48,8 +48,7 @@ class AppAPI
                 [$AppId, $GToken]
             )
         );
-        var_dump($res);
-        return (count($res) == 1)?$res[0]:false;
+        return json_encode((count($res) == 1)?$res[0]:array("Error" => "You don't have account"));
     }
 
     public function getAppName($AppId) {
@@ -59,7 +58,7 @@ class AppAPI
                 [$AppId]
             )
         );
-        return $res[0][0];
+        return json_encode(array("Name" => $res[0][0]));
     }
 
     public function addApp($AppName, $description, $userToken, $AToken) {

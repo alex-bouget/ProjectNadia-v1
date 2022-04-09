@@ -102,6 +102,34 @@ class AppAPI
         return json_encode(array("Error" => "TempToken doesn't exist"));
     }
 
+    public function AutoConnectAccount($AppId, $UserName, $AToken)
+    {
+        $res = $this->_Account_file->decode_result(
+            $this->_Account_file->execute(
+                file_get_contents(__DIR__ . "/sql/get_username.sql"),
+                [$UserName]
+            )
+        );
+
+        if (count($res) != 1) {
+            return json_encode(array("Error" => "Account not exist"));
+        }
+        $res = $this->_Account_file->decode_result(
+            $this->_Account_file->execute(
+                file_get_contents(__DIR__ . "/sql/connect_app_account.sql"),
+                [$AppId, $res[0][0], $AToken]
+            )
+        );
+        if (boolval(count($res))) {
+            return json_encode(array(
+                "UserName" => $res[0][1],
+                "Token" => $res[0][0],
+                "A-Token" => $res[0][2],
+            ));
+        }
+        return json_encode(array("Error" => "bad token"));
+    }
+
     public function getAppName($AppId)
     {
         $res = $this->_Api->decode_result(

@@ -34,8 +34,7 @@
             "name": "200"
         },
         "POST": [
-            "Token",
-            "AppId"
+            "Token"
        ],
        "PHP_function": "GetName"
     },

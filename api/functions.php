@@ -20,3 +20,24 @@ function GetTempToken()
         $_POST["appSecret"]
     );
 }
+
+function AutoConnectAccount()
+{
+    global $app;
+    return $app->AutoConnectAccount(
+        $_POST["AppId"],
+        $_POST["Username"],
+        $_POST["A-Token"]
+    );
+}
+
+function GetName() {
+    global $account;
+    return $account->GetName($_POST["Token"]);
+}
+
+function SearchByName()
+{
+    global $account;
+    return $account->SearchName($_POST["Username"], $_POST["AppId"]);
+}

@@ -194,13 +194,13 @@ class AccountAPI
         return json_encode(array("Username" => $res[0][1]));
     }
 
-    public function SearchName($username)
+    public function SearchName($username, $appId)
     {
         $d = array();
         foreach ($this->_Account_file->decode_result(
             $this->_Account_file->execute(
                 file_get_contents(__DIR__ . "/sql/searchName.sql"),
-                ["%" . $username . "%"]
+                [$appId, "%" . $username . "%"]
             )
         ) as $value) {
             $d[$value[1]] = $value[0];

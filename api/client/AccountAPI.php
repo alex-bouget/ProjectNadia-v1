@@ -164,18 +164,18 @@ class AccountAPI
 
     public function getImage($token)
     {
-        if (file_exists("img/" . $token . ".png")) {
-            $t = "img/" . $token . ".png";
+        if (file_exists(__DIR__ . "/img/" . $token . ".png")) {
+            $t = "/img/" . $token . ".png";
         } else {
-            $t = "img/null.png";
+            $t = "/img/null.png";
         }
-        return json_encode(base64_encode(file_get_contents($t)));
+        return json_encode(base64_encode(file_get_contents(__DIR__ . $t)));
     }
 
     public function change_img($token, $Atoken, $img)
     {
         if ($this->connectionToken($token, $Atoken) !== false) {
-            file_put_contents("img/" . $token . ".png", base64_decode($img));
+            file_put_contents(__DIR__ . "/img/" . $token . ".png", base64_decode($img));
             return json_encode(array("Ready"));
         }
     }
@@ -194,13 +194,13 @@ class AccountAPI
         return json_encode(array("Username" => $res[0][1]));
     }
 
-    public function SearchName($username)
+    public function SearchName($username, $appId)
     {
         $d = array();
         foreach ($this->_Account_file->decode_result(
             $this->_Account_file->execute(
                 file_get_contents(__DIR__ . "/sql/searchName.sql"),
-                ["%" . $username . "%"]
+                [$appId, "%" . $username . "%"]
             )
         ) as $value) {
             $d[$value[1]] = $value[0];

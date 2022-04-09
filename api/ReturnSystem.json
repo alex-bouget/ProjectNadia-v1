@@ -1,0 +1,51 @@
+{
+    "GetTempToken": {
+        "GET": {
+            "temp": "200"
+        },
+        "POST": [
+            "appKey",
+            "appSecret"
+        ],
+        "PHP_function": "GetTempToken"
+    },
+    "AutoConnectAccount": {
+        "GET": {
+            "accounts": "204"
+        },
+        "POST": [
+            "AppId",
+            "Username",
+            "A-Token"
+        ],
+        "PHP_function": "AutoConnectAccount"
+    },
+    "GetImage": {
+        "GET": {
+            "img": "200"
+        },
+        "POST": [
+            "Token"
+        ],
+        "PHP_function": "GetImage"
+    },
+    "GetName": {
+        "GET": {
+            "name": "200"
+        },
+        "POST": [
+            "Token"
+       ],
+       "PHP_function": "GetName"
+    },
+    "SearchByName": {
+        "GET": {
+            "search": "200"
+        },
+        "POST": [
+            "Username",
+            "AppId"
+        ],
+        "PHP_function": "SearchByName"
+    }
+}

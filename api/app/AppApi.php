@@ -84,6 +84,7 @@ class AppAPI
         }
         $TempToken = create_token(10);
         $this->TempToken[$AppId][] = [$TempToken, time() + 600];
+        $this->save_file();
         return json_encode(array("appId" => $AppId, "TempToken" => $TempToken));
     }
 
@@ -94,7 +95,7 @@ class AppAPI
         }
         foreach ($this->TempToken as $AppId => $allCouple) {
             foreach ($allCouple as $keyCouple => $couple) {
-                if ($couple[0] == $TempToken) {
+                if ($couple[0] == $TempToken && $couple[1] > time()) {
                     return json_encode(array("appId" => $AppId, "TempToken" => $TempToken));
                 }
             }

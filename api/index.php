@@ -11,9 +11,9 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 header("Access-Control-Allow-Origin: *");
 $RCJS = "ReturnSystem.json";
 $function_included = array(
-    __DIR__ . "/database.php",
-    __DIR__ . "/gigly.php",
-    __DIR__ . "/functions.php",
+    "database.php",
+    "gigly.php",
+    "functions.php",
 );
 
 error_reporting(E_ERROR);
@@ -23,6 +23,7 @@ foreach ($function_included as $value) {
 if (isset($_GET["MM1_jc"])) { // Launch function
     if ($_GET["MM1_jc"] == "200") {
         echo file_get_contents($RCJS);
+        exit();
     }
 }
 

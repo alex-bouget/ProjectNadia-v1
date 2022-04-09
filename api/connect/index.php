@@ -1,17 +1,25 @@
 <?php
 //GET: APPID, tempToken, URI
 
+include_once __DIR__ . "/../app/AppApi.php";
+
+$app = new AppApi();
+
+
 // Lock if not have parameters
 if (!isset($_GET["APPID"]) || !isset($_GET["tempToken"]) || !isset($_GET["URI"])) {
     echo "Missing arguments";
     die(1);
 }
+
+$tokenGood = isset(json_decode($app->testTempToken($_GET["APPID"], $_GET["tempToken"]), true)["Error"]);
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Nadia-Connection</title>
+    <script src="form_launcher.js"></script>
     <script>
         function removeURLParameter(url, parameter) {
             //prefer to use l.search if you have a location/link object
@@ -37,51 +45,65 @@ if (!isset($_GET["APPID"]) || !isset($_GET["tempToken"]) || !isset($_GET["URI"])
 </head>
 
 <body>
-    <div>
-        <div class="partie">
-            <?php
-            if (isset($_GET["Error"])) {
-                echo "<h1>Erreur: " . urldecode($_GET["Error"]) . "</h1>";
-                // Show Possible Error
-            }
-            ?>
-            <form method="POST" action="connection_exit.php">
-                <input type="hidden" value=<?php echo "${_GET["APPID"]}"; ?> name="APPID">
-                <input type="hidden" value=<?php echo "${_GET["tempToken"]}"; ?> name="tempToken">
-                <input type="hidden" value=<?php echo "${_GET["URI"]}"; ?> name="URI">
-                <!-- Input always here  -->
+    <?php if ($tokenGood) { ?>
+        <script>
+            formLauncher(
+                "POST",
+                "<?php echo urldecode($_GET["URI"]) ?>", {
+                    "Error": "tempToken not valid"
+                }
+            );
+        </script>
 
-                <?php if (isset($_GET["create"])) { ?>
-                    <h1>CREER UN COMPTE</h1>
-                    <input type="hidden" value="create" id="type" name="type">
-                <?php } else { ?>
-                    <h1>CONNEXION A UN COMPTES</h1>
-                    <input type="hidden" value="connect" id="type" name="type">
-                <?php }
-                // If create is set, we switch in create account.
+    <?php } else { ?>
+        <div>
+            <div class="partie">
+                <?php
+                if (isset($_GET["Error"])) {
+                    echo "<h1>Erreur: " . urldecode($_GET["Error"]) . "</h1>";
+                    // Show Possible Error
+                }
                 ?>
+                <form method="POST" action="connection_exit.php">
+                    <input type="hidden" value=<?php echo "${_GET["APPID"]}"; ?> name="APPID">
+                    <input type="hidden" value=<?php echo "${_GET["tempToken"]}"; ?> name="tempToken">
+                    <input type="hidden" value=<?php echo "${_GET["URI"]}"; ?> name="URI">
+                    <!-- Input always here  -->
 
-                <br>
-                <p>Nom d'utilisateur: <input type="text" id="user" name="user"></p>
-                <p>Mot de passe: <input type="password" id="pass" name="pass"></p>
+                    <?php if (isset($_GET["create"])) { ?>
+                        <h1>CREER UN COMPTE</h1>
+                        <input type="hidden" value="create" id="type" name="type">
+                    <?php } else { ?>
+                        <h1>CONNEXION A UN COMPTES</h1>
+                        <input type="hidden" value="connect" id="type" name="type">
+                    <?php }
+                    // If create is set, we switch in create account.
+                    ?>
 
+                    <br>
+                    <p>Nom d'utilisateur: <input type="text" id="user" name="user"></p>
+                    <p>Mot de passe: <input type="password" id="pass" name="pass"></p>
+
+                    <?php if (isset($_GET["create"])) { ?>
+                        <p>Répéter le mot de passe: <input type="password" id="pass2" name="pass2"></p>
+                        <!-- If create is set, we ask for a password confirmation. -->
+                    <?php } ?>
+
+                    <input type="submit" value=<?php
+                                                echo isset($_GET["create"]) ?
+                                                    "Creer le compte" :
+                                                    "Connexion";
+                                                ?>>
+                </form>
                 <?php if (isset($_GET["create"])) { ?>
-                    <p>Répéter le mot de passe: <input type="password" id="pass2" name="pass2"></p>
-                    <!-- If create is set, we ask for a password confirmation. -->
+                    <button onclick="location.href  = removeURLParameter(location.href, 'create')">
+                        Connexion a un compte</button>
+                <?php } else { ?>
+                    <button onclick="location.href  += '&create=true'">Creer un compte</button>
                 <?php } ?>
-
-                <input type="submit" value=<?php
-                                            echo isset($_GET["create"]) ? "Creer le compte" : "Connexion";
-                                            ?>>
-            </form>
-            <?php if (isset($_GET["create"])) { ?>
-                <button onclick="location.href  = removeURLParameter(location.href, 'create')">
-                    Connexion a un compte</button>
-            <?php } else { ?>
-                <button onclick="location.href  += '&create=true'">Creer un compte</button>
-            <?php } ?>
+            </div>
         </div>
-    </div>
+    <?php } ?>
 </body>
 
 </html>

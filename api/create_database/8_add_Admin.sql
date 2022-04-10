@@ -8,10 +8,10 @@ INSERT INTO Account (
     )
 VALUES (
         'AdminFirstRoot1',
-        'GiglyAdmin',
+        'NadiaAdmin',
         ?,
         'kopsriovezvu',
-        '',
+        DATE_ADD(NOW(), INTERVAL 1 DAY),
         (
             select R_Id
             from GRight

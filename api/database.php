@@ -5,6 +5,7 @@ include_once __DIR__ . "/gigly.php";
 
 class MyDB
 {
+    protected static $isConstruct = false;
 
     private $connection;
     private $sqlite3;
@@ -66,6 +67,24 @@ class MyDB
                 );
             }
         }
+
+        MyDB::$isConstruct = true;
+
+        include_once __DIR__ . "/app/AppApi.php";
+
+        $app = new AppApi();
+
+        $result = json_decode(
+            $app->addApp("Nadia", "MainApp for the Api", "AdminFirstRoot1", "kopsriovezvu"),
+            true
+        );
+        file_put_contents(
+            __DIR__ . "/private/Admin_app.php",
+            "<?php\n\$admin_app = array(\"AppId\" => \""
+                . $result["AppId"] . 
+                "\", \"Secret_Key\" => \""
+                . $result["Secret"] . "\");?>"
+        );
     }
 
     function __construct()
@@ -80,7 +99,7 @@ class MyDB
                 $mysqli_account[3]
             );
             $query = mysqli_query($this->connection, 'select * from Gigly_Right');
-            if (!$query) {
+            if (!MyDB::$isConstruct && !$query) {
                 $this->create_base();
             }
             return;

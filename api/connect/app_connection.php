@@ -58,7 +58,7 @@ $api2 = new AccountAPI();
                 "POST",
                 <?php echo json_encode($_POST["URI"]); ?>, {
                     "UserToken": <?php echo json_encode($result[0]); ?>,
-                    "AToken": <?php echo json_encode($result[1]); ?>,
+                    "A-Token": <?php echo json_encode($result[1]); ?>,
                     "UserName": <?php echo json_encode($result[2]); ?>
                 }
             );

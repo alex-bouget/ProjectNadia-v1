@@ -118,7 +118,7 @@ class AppAPI
         $res = $this->_Account_file->decode_result(
             $this->_Account_file->execute(
                 file_get_contents(__DIR__ . "/sql/connect_app_account.sql"),
-                [$AppId, $res[0][0], $AToken]
+                [$res[0][0], $AppId, $AToken]
             )
         );
         if (boolval(count($res))) {
@@ -150,7 +150,7 @@ class AppAPI
         }
         $params = array(
             $this->get_token(25, "AId"),
-            $this->get_token(75, "Secret"),
+            $this->get_token(70, "Secret"),
             $AppName,
             $description,
             $userToken
@@ -179,7 +179,7 @@ class AppAPI
             $right
         );
 
-        $this->_Api->execute(
+        echo $this->_Api->execute(
             file_get_contents(__DIR__ . "/sql/add_account.sql"),
             $params
         );

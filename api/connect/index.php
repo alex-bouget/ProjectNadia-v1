@@ -19,6 +19,10 @@ $tokenGood = isset(json_decode($app->testTempToken($_GET["APPID"], $_GET["tempTo
 
 <head>
     <title>Nadia-Connection</title>
+    <script src="modules/XMLsync.js"></script>
+    <script src="modules/RCJS_API.js"></script>
+    <script src="modules/Nadia.js"></script>
+    <script src="modules/localforage.js"></script>
     <script src="form_launcher.js"></script>
     <script>
         function removeURLParameter(url, parameter) {
@@ -41,6 +45,31 @@ $tokenGood = isset(json_decode($app->testTempToken($_GET["APPID"], $_GET["tempTo
             }
             return url;
         }
+
+        var nadia = localforage.createInstance({
+            name: "Nadia"
+        });
+        nadia.getItem("Client.Account", function(err, value) {
+            if (value != undefined) {
+                var data = PcJsApi_Nadia.AutoConnectAccount(
+                    "bLHrlEtuDaz0mG2I3AZvxweyP",
+                    value["UserName"],
+                    value["A-Token"]);
+                if (!Object.keys(data).includes("Error")) {
+                    formLauncher(
+                        "POST",
+                        "app_connection.php", {
+                            "APPID": <?php echo json_encode($_GET["APPID"]); ?>,
+                            "tempToken": <?php echo json_encode($_GET["tempToken"]); ?>,
+                            "URI": <?php echo json_encode($_GET["URI"]); ?>,
+                            "alreadyConnected": "true",
+                            "user": result["UserName"],
+                            "pass": result["A-Token"]
+                        }
+                    )
+                }
+            }
+        });
     </script>
 </head>
 
@@ -68,6 +97,7 @@ $tokenGood = isset(json_decode($app->testTempToken($_GET["APPID"], $_GET["tempTo
                     <input type="hidden" value=<?php echo "${_GET["APPID"]}"; ?> name="APPID">
                     <input type="hidden" value=<?php echo "${_GET["tempToken"]}"; ?> name="tempToken">
                     <input type="hidden" value=<?php echo "${_GET["URI"]}"; ?> name="URI">
+                    <input type="hidden" value="false" name="alreadyConnected">
                     <!-- Input always here  -->
 
                     <?php if (isset($_GET["create"])) { ?>

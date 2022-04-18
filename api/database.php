@@ -98,8 +98,8 @@ class MyDB
                 $mysqli_account[2],
                 $mysqli_account[3]
             );
-            $query = mysqli_query($this->connection, 'select * from Gigly_Right');
-            if (!MyDB::$isConstruct && !$query) {
+            $query = mysqli_query($this->connection, 'select * from GRight');
+            if (!$query && !MyDB::$isConstruct) {
                 $this->create_base();
             }
             return;

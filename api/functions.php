@@ -1,7 +1,7 @@
 <?php
 
-include __DIR__ . "/client/AccountAPI.php";
-include __DIR__ . "/app/AppApi.php";
+include_once __DIR__ . "/client/AccountAPI.php";
+include_once __DIR__ . "/app/AppApi.php";
 
 $account = new AccountAPI();
 $app = new AppApi();

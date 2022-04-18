@@ -8,3 +8,4 @@ app/page/create/*
 !app/page/create/README.md
 
 api/app/tempToken.json
+jsconfig.json

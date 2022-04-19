@@ -8,5 +8,5 @@ FROM Account
 WHERE Account.G_Token = ?
     AND A_Id = ?
     AND App_Account.A_Token = ?
-    AND DATE('NOW') <= App_Account.A_Death
+    AND UTC_TIMESTAMP <= App_Account.A_Death
     AND GRight.Name != 'Banned'

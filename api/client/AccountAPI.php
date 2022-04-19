@@ -35,14 +35,6 @@ class AccountAPI
         return $token;
     }
 
-    private function augmentDeath($G_token)
-    {
-        $this->_Account_file->execute(
-            file_get_contents(__DIR__ . "/sql/augmentDeath.sql"),
-            [date('Y-m-d', time() + 604800), $G_token]
-        );
-    }
-
     private function connectionToken($token, $Atoken)
     {
         $res = $this->_Account_file->decode_result(
@@ -51,7 +43,7 @@ class AccountAPI
                 [$token, $Atoken]
             )
         );
-        if (boolval(count($res))) {
+        if (!is_bool($res) && count($res) == 1) {
             return array(
                 "UserName" => $res[0][1],
                 "Token" => $res[0][0],
@@ -78,7 +70,7 @@ class AccountAPI
             $username,
             crypt($password, $this->_Salt),
             $this->get_token($this->_A_length, "AToken"),
-            date('Y-m-d', time() + 90),
+            date('Y-m-d H:i:s', time() + 180),
             $this->_Account_file->decode_result(
                 $this->_Account_file->execute(
                     file_get_contents(__DIR__ . "/sql/get_right_id.sql"),
@@ -110,7 +102,7 @@ class AccountAPI
             )
         );
         if ($type_connection == "Password") {
-        //PASSWORD
+            //PASSWORD
             if (
                 count($res) != 1 ||
                 !hash_equals($res[0][2], crypt($pass_type, $this->_Salt))
@@ -119,7 +111,7 @@ class AccountAPI
             }
             $params = array(
                 $this->get_token($this->_A_length, "AToken"),
-                date('Y-m-d', time() + 604800),
+                date('Y-m-d H:i:s', time() + 180),
                 $res[0][0]
             );
             $this->_Account_file->execute(
@@ -132,7 +124,7 @@ class AccountAPI
                 "A-Token" => $params[0]
             ));
         } else if ($type_connection == "AdminToken") {
-        //ADMIN TOKEN
+            //ADMIN TOKEN
             $this->_Account_file->decode_result(
                 $this->_Account_file->execute(
                     file_get_contents(__DIR__ . "/../app/sql/connect_app_account.sql"),
@@ -140,10 +132,19 @@ class AccountAPI
                 )
             );
             if (boolval(count($res))) {
+                $params = array(
+                    $this->get_token($this->_A_length, "AToken"),
+                    date('Y-m-d H:i:s', time() + 180),
+                    $res[0][0]
+                );
+                $this->_Account_file->execute(
+                    file_get_contents(__DIR__ . "/sql/changeAToken.sql"),
+                    $params
+                );
                 return json_encode(array(
                     "UserName" => $res[0][1],
                     "Token" => $res[0][0],
-                    "A-Token" => $res[0][3],
+                    "A-Token" => $params[0],
                 ));
             }
             return json_encode(array("Error" => "bad token"));
@@ -155,7 +156,6 @@ class AccountAPI
             ) {
                 return json_encode(array("Error" => "Account not exist or bad token"));
             }
-            $this->augmentDeath($res[0][0]);
             return json_encode($test);
         }
     }

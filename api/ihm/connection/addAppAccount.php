@@ -17,21 +17,8 @@ $api2 = new AccountAPI();
 
 <body>
     <?php
-    if (!$api2->connect_account($_POST["UserName"], $_POST["AToken"], "Token")) { ?>
-        <script>
-            formLauncher(
-                "GET",
-                "connection.php", {
-                    "APPID": "<?php echo $_POST["APPID"]; ?>",
-                    "tempToken": "<?php echo $_POST["tempToken"]; ?>",
-                    "URI": "<?php echo $_POST["URI"]; ?>",
-                    "Error": "<?php echo urlencode("Problem with account connection,\ntry again"); ?>"
-                }
-            );
-        </script>
-    <?php
-        exit();
-    }
+    include __DIR__ . "/../test_token.php";
+    include __DIR__ . "/../test_account.php";
 
     $result = json_decode($api->addAccount($_POST["APPID"], $_POST["Token"], $_POST["AToken"]), true);
     ?>

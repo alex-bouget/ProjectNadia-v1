@@ -105,20 +105,19 @@ class AppAPI
 
     public function AutoConnectAccount($AppId, $UserName, $AToken)
     {
-        $res = $this->_Account_file->decode_result(
-            $this->_Account_file->execute(
-                file_get_contents(__DIR__ . "/sql/get_username.sql"),
+        $res = $this->_Api->decode_result(
+            $this->_Api->execute(
+                file_get_contents(__DIR__ . "/../client/sql/get_username.sql"),
                 [$UserName]
             )
         );
-
         if (count($res) != 1) {
             return json_encode(array("Error" => "Account not exist"));
         }
-        $res = $this->_Account_file->decode_result(
-            $this->_Account_file->execute(
+        $res = $this->_Api->decode_result(
+            $this->_Api->execute(
                 file_get_contents(__DIR__ . "/sql/connect_app_account.sql"),
-                [$AppId, $res[0][0], $AToken]
+                [$res[0][0], $AppId, $AToken]
             )
         );
         if (boolval(count($res))) {
@@ -150,7 +149,7 @@ class AppAPI
         }
         $params = array(
             $this->get_token(25, "AId"),
-            $this->get_token(75, "Secret"),
+            $this->get_token(70, "Secret"),
             $AppName,
             $description,
             $userToken
@@ -178,7 +177,6 @@ class AppAPI
             date('Y-m-d', time() + 604800),
             $right
         );
-
         $this->_Api->execute(
             file_get_contents(__DIR__ . "/sql/add_account.sql"),
             $params

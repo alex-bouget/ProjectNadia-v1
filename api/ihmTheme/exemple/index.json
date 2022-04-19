@@ -1,0 +1,7 @@
+{
+    "all": {
+        "style": "all",
+        "body.header": "header.html",
+        "body.footer": "footer.html"
+    }
+}

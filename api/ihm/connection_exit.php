@@ -43,7 +43,7 @@ $result = json_decode(
         <script>
             formLauncher(
                 "POST",
-                "aiguille.php", {
+                "aiguille/", {
                     "APPID": <?php echo json_encode($_POST["APPID"]); ?>,
                     "tempToken": <?php echo json_encode($_POST["tempToken"]); ?>,
                     "URI": <?php echo json_encode($_POST["URI"]); ?>,

@@ -6,7 +6,7 @@ var NadiaSite = new class {
             document.getElementById("avatar_div").onclick = function () { location.href = 'connect.php'; };
             if (value != undefined) {
                 var data = PcJsApi_Nadia.AutoConnectAccount(
-                    "bLHrlEtuDaz0mG2I3AZvxweyP",
+                    "WbDREwKHvftsVO80M5JPUglum",
                     value["UserName"],
                     value["A-Token"]);
                 if (!Object.keys(data).includes("Error")) {

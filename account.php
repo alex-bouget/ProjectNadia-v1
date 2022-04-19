@@ -29,6 +29,7 @@
             <img id="avatar_img" alt="se connecter" src="Site/img/connect.jpg">
             <div id="listA">
                 <p><a href="account.php">Info</a></p>
+                <p><a href="createApp.php">Create App</a></p>
             </div>
         </div>
     </header>

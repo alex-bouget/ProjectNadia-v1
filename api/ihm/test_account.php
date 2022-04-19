@@ -1,5 +1,7 @@
 <?php
-if (isset(json_decode($api2->connect_account($_POST["UserName"], $_POST["AToken"], "Token"), true)["Error"])) { ?>
+include_once __DIR__ . "/../client/AccountAPI.php";
+$account = new AccountAPI();
+if (isset(json_decode($account->connect_account($_POST["UserName"], $_POST["AToken"], "Token"), true)["Error"])) { ?>
     <script>
         formLauncher(
             "GET",

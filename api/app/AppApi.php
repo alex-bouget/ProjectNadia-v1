@@ -177,8 +177,7 @@ class AppAPI
             date('Y-m-d', time() + 604800),
             $right
         );
-
-        echo $this->_Api->execute(
+        $this->_Api->execute(
             file_get_contents(__DIR__ . "/sql/add_account.sql"),
             $params
         );

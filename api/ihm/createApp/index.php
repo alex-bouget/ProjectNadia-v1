@@ -3,7 +3,6 @@
 error_reporting(E_ERROR);
 ?>
 <html>
-
 <head>
     <title>Nadia-Root</title>
     <script src="../form_launcher.js"></script>
@@ -18,23 +17,21 @@ error_reporting(E_ERROR);
         echo "<h1>" . $_POST["Error"] . "</h1>";
     }
     ?>
-    <h1>Change Password</h1>
+    <h1>Create App</h1>
     <br>
-    <form method="POST" action="passwChange.php">
+    <form method="POST" action="createApp.php">
         <input type="hidden" value=<?php echo "${_POST["APPID"]}"; ?> name="APPID">
         <input type="hidden" value=<?php echo "${_POST["tempToken"]}"; ?> name="tempToken">
         <input type="hidden" value=<?php echo "${_POST["URI"]}"; ?> name="URI">
         <input type="hidden" value=<?php echo "${_POST["UserName"]}"; ?> name="UserName">
         <input type="hidden" value=<?php echo "${_POST["Token"]}"; ?> name="Token">
         <input type="hidden" value=<?php echo "${_POST["AToken"]}"; ?> name="AToken">
-        <p>Old password</p>
-        <input type="text" name="oldPass">
-        <p>password</p>
-        <input type="text" name="pass">
-        <p>retype password</p>
-        <input type="text" name="pass2">
+        <p>App Name</p>
+        <input type="text" name="Aname">
+        <p>Description</p>
+        <input type="text" name="Adesc">
         <br>
-        <input type="submit" value="Change password">
+        <input type="submit" value="Create App">
     </form>
     <form method="POST" action=<?php echo urldecode($_POST["URI"]); ?>>
         <input type="submit" value="return">

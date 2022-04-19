@@ -17,6 +17,7 @@ $api2 = new AccountAPI();
     <?php
     include __DIR__ . "/../test_token.php";
     include __DIR__ . "/../test_account.php";
+    include __DIR__ . "/../test_admin.php";
     if ($_POST["pass"] != $_POST["pass2"]) { ?>
         <script>
             formLauncher(

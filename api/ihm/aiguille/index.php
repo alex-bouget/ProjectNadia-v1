@@ -12,17 +12,22 @@ include_once __DIR__ . "/../../app/AppApi.php";
 
 <body>
     <?php
-    include __DIR__ . "/../../test_token.php";
+    include __DIR__ . "/../test_token.php";
     if (!isset($_POST["Purpose"])) {
         include __DIR__ . "error-001.html";
-        break;
     } else {
         switch ($_POST["Purpose"]) {
             case "Connection":
-                include "Connection.php";
+                include "return/Connection.php";
                 break;
             case "PasswordChange":
-                include "PasswordChange";
+                include "PasswordChange.php";
+                break;
+            case "AllMyApp":
+                include "error-003.html";
+                break;
+            case "CreateApp":
+                include "CreateApp.php";
                 break;
             case "PasswordReset":
                 include "error-003.html";

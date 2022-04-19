@@ -30,11 +30,22 @@ var NadiaSite = new class {
         }
     }
 
-
     rechargeImg(id = "avatar_img") {
         var img_data = PcJsApi_Nadia.GetImage(this.token)
         if (img_data == -1 || img_data == null) {
             document.getElementById(id).src = "img/connect.jpg";
         } else { document.getElementById(id).src = "data:image/png;base64," + img_data; }
+    }
+
+    deco() {
+        this.nadia.removeItem("Client.Account");
+        location.href = "index.php";
+    }
+
+    changeImg(img) {
+
+    }
+
+    changePasswd() {
     }
 }();

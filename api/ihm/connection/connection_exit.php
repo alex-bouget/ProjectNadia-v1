@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ERROR);
-include __DIR__ . "/../client/AccountAPI.php";
+include __DIR__ . "/../../client/AccountAPI.php";
 
 $api = new AccountAPI();
 
@@ -19,7 +19,7 @@ $result = json_decode(
 
 <head>
     <title>Nadia-Connection</title>
-    <script src="form_launcher.js"></script>
+    <script src="../form_launcher.js"></script>
 </head>
 
 <body>

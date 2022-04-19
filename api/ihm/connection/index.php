@@ -1,7 +1,7 @@
 <?php
 //GET: APPID, tempToken, URI
 
-include_once __DIR__ . "/../app/AppApi.php";
+include_once __DIR__ . "/../../app/AppApi.php";
 
 $app = new AppApi();
 
@@ -19,11 +19,11 @@ $tokenGood = isset(json_decode($app->testTempToken($_GET["APPID"], $_GET["tempTo
 
 <head>
     <title>Nadia-Connection</title>
-    <script src="modules/XMLsync.js"></script>
-    <script src="modules/RCJS_API.js"></script>
-    <script src="modules/Nadia.js"></script>
-    <script src="modules/localforage.js"></script>
-    <script src="form_launcher.js"></script>
+    <script src="../modules/XMLsync.js"></script>
+    <script src="../modules/RCJS_API.js"></script>
+    <script src="../modules/Nadia.js"></script>
+    <script src="../modules/localforage.js"></script>
+    <script src="../form_launcher.js"></script>
     <script>
         function removeURLParameter(url, parameter) {
             //prefer to use l.search if you have a location/link object

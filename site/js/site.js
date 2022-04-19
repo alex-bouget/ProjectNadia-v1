@@ -47,5 +47,6 @@ var NadiaSite = new class {
     }
 
     changePasswd() {
+        location.href = "changePasswd.php";
     }
 }();

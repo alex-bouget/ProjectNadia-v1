@@ -7,6 +7,7 @@
     <script src="Site/js/modules/localforage.js"></script>
     <script src="Site/js/modules/RCJS_API.js"></script>
     <script src="Site/js/modules/XMLsync.js"></script>
+    <script src="Site/js/form_launcher.js"></script>
     <script src="Site/js/Nadia.js"></script>
     <script src="Site/js/site.js"></script>
     <title>Nadia-Web</title>
@@ -45,14 +46,14 @@
                 <p>Nom utilisateur: <span id="username"></span><br></p>
                 <img src="img/connect.jpg" id="img_info">
                 <script>
-                    Account.gigly.getItem("Client.Account", function(err, value) {
+                    NadiaSite.nadia.getItem("Client.Account", function(err, value) {
                         document.getElementById("username").innerHTML = value["UserName"];
-                        Account.rechargeImg("img_info");
+                        NadiaSite.rechargeImg("img_info");
                     });
                 </script>
             </div>
             <div>
-                <button onclick="NadiaSite.changePassw()">Changer De mot de passe</button>
+                <button onclick="NadiaSite.changePasswd()">Changer De mot de passe</button>
             </div>
             <br>
             <div>

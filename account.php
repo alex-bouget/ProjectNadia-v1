@@ -49,7 +49,9 @@
                 <script>
                     NadiaSite.nadia.getItem("Client.Account", function(err, value) {
                         document.getElementById("username").innerHTML = value["UserName"];
-                        NadiaSite.rechargeImg("img_info");
+                        setTimeout(function() {
+                            NadiaSite.rechargeImg("img_info");
+                        }, 500);
                     });
                 </script>
             </div>

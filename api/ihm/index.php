@@ -1,4 +1,5 @@
 <?php
+include_once __DIR__ . "/../private/Admin_app.php";
 //GET: APPID, tempToken, URI
 
 // Lock if not have parameters
@@ -44,7 +45,7 @@ if (!isset($_GET["APPID"]) || !isset($_GET["tempToken"]) || !isset($_GET["URI"])
         nadia.getItem("Client.Account", function(err, value) {
             if (value != undefined) {
                 var data = PcJsApi_Nadia.AutoConnectAccount(
-                    "bLHrlEtuDaz0mG2I3AZvxweyP",
+                    <?php echo json_encode($admin_app["AppId"]); ?>,
                     value["UserName"],
                     value["A-Token"]);
                 if (!Object.keys(data).includes("Error")) {

@@ -2,8 +2,8 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="Site/css/norm.css">
-    <link rel="stylesheet" href="Site/css/header.css">
+    <link rel="stylesheet" href="site/css/norm.css">
+    <link rel="stylesheet" href="site/css/header.css">
     <script src="site/js/modules/localforage.js"></script>
     <script src="site/js/modules/RCJS_API.js"></script>
     <script src="site/js/modules/XMLsync.js"></script>

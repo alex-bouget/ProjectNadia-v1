@@ -12,7 +12,7 @@ $actual_link = explode(
 );
 unset($actual_link[count($actual_link) - 1]);
 
-$nadia = $actual_link . "/api/";
+$nadia = implode("/", $actual_link) . "/api/";
 
 $pcjs = new PcJsApi($nadia);
 include "api/private/Admin_app.php";

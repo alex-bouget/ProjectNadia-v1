@@ -1,11 +1,8 @@
 api/private/*
 !api/private/README.md
 
-app/page/connect/*
-!app/page/connect/README.md
-
-app/page/create/*
-!app/page/create/README.md
+api/client/img/*
+!api/client/img/null.png
 
 api/app/tempToken.json
 jsconfig.json

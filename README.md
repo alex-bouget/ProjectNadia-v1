@@ -35,6 +35,7 @@ $data = $pcjs->getJsBySystem("GetTempToken", array(
 change_location(
     $nadia . "connect/",
     array(
+        "Purpose" => "Connect";
         "APPID" => $data["AppId"],
         "tempToken" => $data["TempToken"],
         "URI" => $uri

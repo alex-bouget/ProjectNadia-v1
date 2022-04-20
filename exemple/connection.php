@@ -26,7 +26,8 @@ unset($actual_link[count($actual_link) - 1]);
 $actual_link = implode("/", $actual_link) . "/result.php";
 
 ?>
-<form method="GET" action=<?php echo $nadia . "connect/"; ?> id="formul">
+<form method="GET" action=<?php echo $nadia . "ihm/"; ?> id="formul">
+    <input type="hidden" value="Connection" name="Purpose">
     <input type="hidden" value=<?php echo "${data["appId"]}"; ?> name="APPID">
     <input type="hidden" value=<?php echo "${data["TempToken"]}"; ?> name="tempToken">
     <input type="hidden" value=<?php echo "${actual_link}"; ?> name="URI">

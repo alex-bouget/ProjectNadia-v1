@@ -1,15 +1,6 @@
 <?php
 
-include "Site/php/PcJsApi.php";
-$nadia = "http://github/Github/ProjectNadia/api/";
-
-$pcjs = new PcJsApi($nadia);
-include "api/private/Admin_app.php";
-
-$data = $pcjs->getJsBySystem("GetTempToken", array(
-    "appKey" => $admin_app["AppId"],
-    "appSecret" => $admin_app["Secret_Key"]
-));
+include "site/php/PcJsApi.php";
 
 $actual_link = explode(
     "/",
@@ -20,6 +11,17 @@ $actual_link = explode(
     ) . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"
 );
 unset($actual_link[count($actual_link) - 1]);
+
+$nadia = $actual_link . "/api/";
+
+$pcjs = new PcJsApi($nadia);
+include "api/private/Admin_app.php";
+
+$data = $pcjs->getJsBySystem("GetTempToken", array(
+    "appKey" => $admin_app["AppId"],
+    "appSecret" => $admin_app["Secret_Key"]
+));
+
 $actual_link = implode("/", $actual_link) . "/resultConnect.php";
 
 ?>

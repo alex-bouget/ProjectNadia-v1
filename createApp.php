@@ -1,6 +1,6 @@
 <?php
 
-include "Site/php/PcJsApi.php";
+include "site/php/PcJsApi.php";
 $nadia = "http://github/Github/ProjectNadia/api/";
 
 $pcjs = new PcJsApi($nadia);

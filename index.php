@@ -4,17 +4,17 @@
 <head>
     <link rel="stylesheet" href="Site/css/norm.css">
     <link rel="stylesheet" href="Site/css/header.css">
-    <script src="Site/js/modules/localforage.js"></script>
-    <script src="Site/js/modules/RCJS_API.js"></script>
-    <script src="Site/js/modules/XMLsync.js"></script>
-    <script src="Site/js/Nadia.js"></script>
-    <script src="Site/js/site.js"></script>
+    <script src="site/js/modules/localforage.js"></script>
+    <script src="site/js/modules/RCJS_API.js"></script>
+    <script src="site/js/modules/XMLsync.js"></script>
+    <script src="site/js/Nadia.js"></script>
+    <script src="site/js/site.js"></script>
     <title>Nadia-Web</title>
 </head>
 
 <body>
     <header>
-        <img src="Site/img/gigly.png" alt="icone">
+        <img src="site/img/gigly.png" alt="icone">
         <div id="navig">
             <nav>
                 <?php

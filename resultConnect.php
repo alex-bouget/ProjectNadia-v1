@@ -4,8 +4,8 @@
 
 <head>
     <title>Nadia</title>
-    <script src="Site/js/modules/localforage.js"></script>
-    <script src="Site/js/form_launcher.js"></script>
+    <script src="site/js/modules/localforage.js"></script>
+    <script src="site/js/form_launcher.js"></script>
 </head>
 
 <body>

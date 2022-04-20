@@ -15,10 +15,21 @@
         },
         "POST": [
             "AppId",
-            "Username",
+            "Token",
             "A-Token"
         ],
         "PHP_function": "AutoConnectAccount"
+    },
+    "AutoConnectAccountUsername": {
+        "GET": {
+            "accounts": "206"
+        },
+        "POST": [
+            "AppId",
+            "Username",
+            "A-Token"
+        ],
+        "PHP_function": "AutoConnectAccountUsername"
     },
     "GetImage": {
         "GET": {

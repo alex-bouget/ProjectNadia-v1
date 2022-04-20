@@ -103,7 +103,7 @@ class AppAPI
         return json_encode(array("Error" => "TempToken doesn't exist"));
     }
 
-    public function AutoConnectAccount($AppId, $UserName, $AToken)
+    public function AutoConnectAccountUsername($AppId, $UserName, $AToken)
     {
         $res = $this->_Api->decode_result(
             $this->_Api->execute(
@@ -114,10 +114,24 @@ class AppAPI
         if (count($res) != 1) {
             return json_encode(array("Error" => "Account not exist"));
         }
+        return $this->AutoConnectAccount($AppId, $res[0][0], $AToken);
+    }
+
+    public function AutoConnectAccount($AppId, $Token, $AToken)
+    {
+        $res = $this->_Api->decode_result(
+            $this->_Api->execute(
+                file_get_contents(__DIR__ . "/../client/sql/get_Gtoken.sql"),
+                [$Token]
+            )
+        );
+        if (count($res) != 1) {
+            return json_encode(array("Error" => "Account not exist"));
+        }
         $res = $this->_Api->decode_result(
             $this->_Api->execute(
                 file_get_contents(__DIR__ . "/sql/connect_app_account.sql"),
-                [$res[0][0], $AppId, $AToken]
+                [$Token, $AppId, $AToken]
             )
         );
         if (boolval(count($res))) {

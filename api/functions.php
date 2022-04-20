@@ -21,12 +21,22 @@ function GetTempToken()
     );
 }
 
+function AutoConnectAccountUsername()
+{
+    global $app;
+    return $app->AutoConnectAccountUsername(
+        $_POST["AppId"],
+        $_POST["Username"],
+        $_POST["A-Token"]
+    );
+}
+
 function AutoConnectAccount()
 {
     global $app;
     return $app->AutoConnectAccount(
         $_POST["AppId"],
-        $_POST["Username"],
+        $_POST["Token"],
         $_POST["A-Token"]
     );
 }

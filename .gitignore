@@ -6,3 +6,6 @@ api/client/img/*
 
 api/app/tempToken.json
 jsconfig.json
+
+api/ihmTheme/*
+!api/ihmTheme/README.md

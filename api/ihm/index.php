@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__ . "/../private/Admin_app.php";
+include __DIR__ . "/../ihmTheme/themeLoader.php";
 //GET: APPID, tempToken, URI
 
 // Lock if not have parameters
@@ -10,7 +11,13 @@ if (!isset($_GET["APPID"]) || !isset($_GET["tempToken"]) || !isset($_GET["URI"])
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
+    <style>
+        <?php
+        style_construct($_GET["APPID"]);
+        ?>
+    </style>
     <title>Nadia-Connection</title>
     <script src="modules/XMLsync.js"></script>
     <script src="modules/RCJS_API.js"></script>
@@ -46,7 +53,7 @@ if (!isset($_GET["APPID"]) || !isset($_GET["tempToken"]) || !isset($_GET["URI"])
             if (value != undefined) {
                 var data = PcJsApi_Nadia.AutoConnectAccount(
                     <?php echo json_encode($admin_app["AppId"]); ?>,
-                    value["UserName"],
+                    value["Token"],
                     value["A-Token"]);
                 if (!Object.keys(data).includes("Error")) {
                     formLauncher(
@@ -68,7 +75,9 @@ if (!isset($_GET["APPID"]) || !isset($_GET["tempToken"]) || !isset($_GET["URI"])
 </head>
 
 <body>
-    <?php include __DIR__ . "/test_token_Get.php"; ?>
+    <?php include __DIR__ . "/test_token_Get.php";
+    header_construct($_GET["APPID"]);
+    ?>
     <div>
         <div class="partie">
             <?php

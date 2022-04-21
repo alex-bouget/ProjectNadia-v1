@@ -45,7 +45,7 @@ $tokenGood = isset(json_decode($api->testTempToken($_POST["APPID"], $_POST["temp
             formLauncher(
                 "POST",
                 <?php echo json_encode($_POST["URI"]); ?>, {
-                    "UserToken": <?php echo json_encode($result[0]); ?>,
+                    "Token": <?php echo json_encode($result[0]); ?>,
                     "A-Token": <?php echo json_encode($result[1]); ?>,
                     "UserName": <?php echo json_encode($result[2]); ?>
                 }

@@ -26,7 +26,7 @@ $api2 = new AccountAPI();
         formLauncher(
             "POST",
             "<?php echo urldecode($_POST["URI"]) ?>", {
-                "UserToken": <?php echo json_encode($result["Token"]); ?>,
+                "Token": <?php echo json_encode($result["Token"]); ?>,
                 "A-Token": <?php echo json_encode($result["A-Token"]); ?>,
                 "UserName": <?php echo json_encode($_POST["UserName"]); ?>
             }

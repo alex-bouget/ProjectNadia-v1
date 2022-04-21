@@ -14,7 +14,7 @@
 
 <body>
     <header>
-        <img src="site/img/gigly.png" alt="icone">
+        <img src="site/img/icone.png" alt="icone">
         <div id="navig">
             <nav>
                 <?php

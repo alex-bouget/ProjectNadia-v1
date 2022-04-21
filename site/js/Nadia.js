@@ -10,11 +10,11 @@ var PcJsApi_Nadia = new class {
             }
         );
     }
-    AutoConnectAccount(AppId, Username, AToken) {
+    AutoConnectAccount(AppId, Token, AToken) {
         return this.rcjs.getJsBySystem(
             "AutoConnectAccount", {
                 "AppId": AppId,
-                "Username": Username,
+                "Token": Token,
                 "A-Token": AToken
             }
         );

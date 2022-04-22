@@ -27,7 +27,8 @@ include __DIR__ . "/../../ihmTheme/themeLoader.php";
     ?>
     <div>
         <div class="partie">
-            <h1>Create App</h1>
+            <h1>Nadia-API</h1>
+            <h2>Create App</h2>
             <br>
             <form method="POST" action="createApp.php">
                 <input type="hidden" value=<?php echo "${_POST["APPID"]}"; ?> name="APPID">

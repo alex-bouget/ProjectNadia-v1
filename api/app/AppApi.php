@@ -68,7 +68,15 @@ class AppAPI
                 [$AppId, $GToken]
             )
         );
-        return json_encode((count($res) == 1) ? $res[0] : array("Error" => "You don't have account"));
+        if (count($res) != 1) {
+            return json_encode(array("Error" => "You don't have account"));
+        }
+        $res[0][1] = $this->get_token(60, "AToken");
+        $this->_Api->execute(
+            file_get_contents(__DIR__ . "/sql/changeAToken.sql"),
+            [$res[0][1], date('Y-m-d', time() + 604800), $GToken, $AppId]
+        );
+        return json_encode($res[0]);
     }
 
     public function getTempToken($AppId, $appSecret)

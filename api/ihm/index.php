@@ -93,12 +93,12 @@ if (!isset($_GET["APPID"]) || !isset($_GET["tempToken"]) || !isset($_GET["URI"])
                 <input type="hidden" value=<?php echo "${_GET["URI"]}"; ?> name="URI">
                 <input type="hidden" value="false" name="alreadyConnected">
                 <!-- Input always here  -->
-
+                <h1>Nadia-API</h1>
                 <?php if (isset($_GET["create"])) { ?>
-                    <h1>CREER UN COMPTE</h1>
+                    <h2>CREER UN COMPTE</h2>
                     <input type="hidden" value="create" id="type" name="type">
                 <?php } else { ?>
-                    <h1>CONNEXION A UN COMPTES</h1>
+                    <h2>CONNEXION A UN COMPTES</h2>
                     <input type="hidden" value="connect" id="type" name="type">
                 <?php }
                 // If create is set, we switch in create account.

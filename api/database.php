@@ -78,6 +78,7 @@ class MyDB
             $app->addApp("Nadia", "MainApp for the Api", "AdminFirstRoot1", "kopsriovezvu"),
             true
         );
+        var_dump($result);
         file_put_contents(
             __DIR__ . "/private/Admin_app.php",
             "<?php\n\$admin_app = array(\"AppId\" => \""

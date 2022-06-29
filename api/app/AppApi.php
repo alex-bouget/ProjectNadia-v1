@@ -28,7 +28,6 @@ class AppAPI
 
     protected function save_file()
     {
-        echo __DIR__ . "/tempToken.json";
         file_put_contents(__DIR__ . "/tempToken.json", json_encode($this->TempToken));
     }
 

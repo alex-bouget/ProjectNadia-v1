@@ -16,7 +16,20 @@ Change the password of a account.
 
 :warning: **Warning**: This Purpose need adminApp
 
+#### AllMyApp
+
+`GET ihm/?APPID=<APPID>&tempToken=<tempToken>&URI=<URI>&Purpose=AllMyApp`
+
+Not implemented yet.
+#### CreateApp
+
+`GET ihm/?APPID=<APPID>&tempToken=<tempToken>&URI=<URI>&Purpose=AllMyApp`
+
+:warning: **Warning**: This Purpose need adminApp
+
 #### PasswordReset
+
+`GET ihm/?APPID=<APPID>&tempToken=<tempToken>&URI=<URI>&Purpose=AllMyApp`
 
 Not implemented yet.
 

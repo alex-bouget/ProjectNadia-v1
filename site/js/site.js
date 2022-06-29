@@ -6,14 +6,14 @@ var NadiaSite = new class {
             document.getElementById("avatar_div").onclick = function () { location.href = 'connect.php'; };
             if (value != undefined) {
                 var data = PcJsApi_Nadia.AutoConnectAccount(
-                    "lE1YmOBovRjJQWdbkwxfPLuIn",
+                    "6y1PoSsXzE3b0VwAm7aRFMfk8",
                     value["Token"],
                     value["A-Token"]);
                 if (!Object.keys(data).includes("Error")) {
                     NadiaSite.nadia.setItem("Client.Account", data);
                     document.getElementById("avatar_div").onclick = function () { NadiaSite.viewConnect(); };
                     NadiaSite.token = value["Token"];
-                    NadiaSite.Atoken = value["AToken"];
+                    NadiaSite.Atoken = value["A-Token"];
                 } else { NadiaSite.nadia.removeItem("Client.Account"); }
             }
             NadiaSite.rechargeImg();

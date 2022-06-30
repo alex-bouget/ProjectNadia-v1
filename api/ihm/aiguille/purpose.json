@@ -1,0 +1,19 @@
+{
+    "Connection": {
+        "Redirect": "../connection/"
+    },
+    "PasswordChange": {
+        "Redirect": "../changePasswd/",
+        "Require": [
+            "AdminApp"
+        ]
+    },
+    "AllMyApp": {},
+    "CreateApp": {
+        "Redirect": "../createApp/",
+        "Require": [
+            "AdminApp"
+        ]
+    },
+    "PasswordReset": {}
+}

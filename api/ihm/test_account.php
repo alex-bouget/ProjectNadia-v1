@@ -1,7 +1,8 @@
 <?php
 include_once __DIR__ . "/../client/AccountAPI.php";
 $account = new AccountAPI();
-if (isset(json_decode($account->connect_account($_POST["UserName"], $_POST["AToken"], "Token"), true)["Error"])) { ?>
+if (isset(json_decode($account->connect_account($_POST["UserName"], $_POST["AToken"], "Token"), true)["Error"])) {
+    if (isset($_POST["URI"])) { ?>
     <script>
         formLauncher(
             "GET",
@@ -15,6 +16,9 @@ if (isset(json_decode($account->connect_account($_POST["UserName"], $_POST["ATok
         );
     </script>
 <?php
+    } else {
+        echo "What are you doing bro ?";
+    }
     die();
 }
 ?>

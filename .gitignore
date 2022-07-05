@@ -1,3 +1,5 @@
+.vscode
+
 api/private/*
 !api/private/README.md
 

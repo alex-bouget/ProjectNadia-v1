@@ -8,7 +8,12 @@
             "AdminApp"
         ]
     },
-    "AllMyApp": {},
+    "AllMyApp": {
+        "Redirect": "../allMyApp/",
+        "Require": [
+            "AdminApp"
+        ]
+    },
     "CreateApp": {
         "Redirect": "../createApp/",
         "Require": [

@@ -111,6 +111,53 @@ class AppAPI
         return json_encode(array("Error" => "TempToken doesn't exist"));
     }
 
+    public function getAllMyApp($userToken, $AToken)
+    {
+        $user = $this->TestConnection($userToken, $AToken);
+        if (is_string($user)) {
+            return $user;
+        }
+        $res = $this->_Api->decode_result(
+            $this->_Api->execute(
+                file_get_contents(__DIR__ . "/sql/get_all_my_app.sql"),
+                [$userToken]
+            )
+        );
+        $data = array();
+        foreach ($res as $value) {
+            $data[] = array("appId" => $value[0], "appName" => $value[1], "appDesc" => $value[2]);
+        }
+        return json_encode($data);
+    }
+
+    public function getAppData($appId, $userToken, $AToken)
+    {
+        $user = $this->TestConnection($userToken, $AToken);
+        if (is_string($user)) {
+            return $user;
+        }
+        $res = $this->_Api->decode_result(
+            $this->_Api->execute(
+                file_get_contents(__DIR__ . "/sql/get_app.sql"),
+                [$appId, $userToken]
+            )
+        );
+        if (count($res) == 0) {
+            return json_encode(array("Error" => "App doesn't exist"));
+        }
+        $app_data = array("appName" => $res[0][0], "appDesc" => $res[0][1]);
+        $data = "";
+        if (file_exists(__DIR__ . "/icone/" . $appId . ".png")) {
+            $data = base64_encode(file_get_contents(__DIR__ . "/icone/" . $appId . ".png"));
+        } else {
+            $data = base64_encode(file_get_contents(__DIR__ . "/icone/default.png"));
+        }
+        $app_data["icone"] = $data;
+        return json_encode($app_data);
+
+
+    }
+
     public function AutoConnectAccountUsername($AppId, $UserName, $AToken)
     {
         $res = $this->_Api->decode_result(
@@ -161,6 +208,21 @@ class AppAPI
             )
         );
         return json_encode(array("Name" => $res[0][0]));
+    }
+
+    public function updateApp($AppId, $AppName, $AppDesc, $userToken, $AToken)
+    {
+        $user = $this->TestConnection($userToken, $AToken);
+        if (is_string($user)) {
+            return $user;
+        }
+        $res = $this->_Api->decode_result(
+            $this->_Api->execute(
+                file_get_contents(__DIR__ . "/sql/update_app.sql"),
+                [$AppName, $AppDesc, $AppId, $userToken]
+            )
+        );
+        return json_encode(array("Success" => "true"));
     }
 
     public function addApp($AppName, $description, $userToken, $AToken)

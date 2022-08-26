@@ -1,6 +1,6 @@
 <?php
 
 $return = "/index.php";
-$purpose = "PasswordChange";
+$purpose = "AllMyApp";
 
 include "apiConnection.php";

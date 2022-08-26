@@ -52,6 +52,9 @@ include_once __DIR__ . "/../../client/AccountAPI.php";
                         </form>
                     </div>
                 <?php } ?>
+                <form method="POST" action=<?php echo urldecode($_POST["URI"]); ?>>
+                    <input type="submit" value="return">
+                </form>
             </div>
         </div>
     </div>

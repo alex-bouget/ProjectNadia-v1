@@ -41,9 +41,13 @@ $allApp = json_decode($Api->getAppData($_POST["AppViewer"], $_POST["Token"], $_P
                 <input type="hidden" value=<?php echo "${_POST["UserName"]}"; ?> name="UserName">
                 <input type="hidden" value=<?php echo "${_POST["Token"]}"; ?> name="Token">
                 <input type="hidden" value=<?php echo "${_POST["AToken"]}"; ?> name="AToken">
-                <input type="hidden" value=<?php echo "${app["appId"]}"; ?> name="AppViewer">
+                <input type="hidden" value=<?php echo "${_POST["AppViewer"]}"; ?> name="AppViewer">
                 <p>AppName: <input type="text" value="<?php echo $allApp["appName"] ?>" name="AppName"></p>
                 <p>Description: <input type="text" value="<?php echo $allApp["appDesc"] ?>" name="AppDesc"></p>
+                <input type="submit" value="Save">
+            </form>
+            <form method="POST" action=<?php echo urldecode($_POST["URI"]); ?>>
+                <input type="submit" value="return">
             </form>
         </div>
     </div>

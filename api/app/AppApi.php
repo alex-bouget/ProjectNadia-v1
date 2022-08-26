@@ -210,6 +210,22 @@ class AppAPI
         return json_encode(array("Name" => $res[0][0]));
     }
 
+    public function updateApp($AppId, $AppName, $AppDesc, $userToken, $AToken)
+    {
+        $user = $this->TestConnection($userToken, $AToken);
+        if (is_string($user)) {
+            return $user;
+        }
+        echo $AppId;
+        $res = $this->_Api->decode_result(
+            $this->_Api->execute(
+                file_get_contents(__DIR__ . "/sql/update_app.sql"),
+                [$AppName, $AppDesc, $AppId, $userToken]
+            )
+        );
+        return json_encode(array("Success" => "true"));
+    }
+
     public function addApp($AppName, $description, $userToken, $AToken)
     {
         $user = $this->TestConnection($userToken, $AToken);

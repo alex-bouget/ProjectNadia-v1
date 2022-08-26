@@ -29,6 +29,7 @@
             <div id="listA">
                 <p><a href="account.php">Info</a></p>
                 <p><a href="createApp.php">Create App</a></p>
+                <p><a href="viewApp.php">View App</a></p>
             </div>
         </div>
     </header>

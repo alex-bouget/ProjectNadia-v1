@@ -216,7 +216,6 @@ class AppAPI
         if (is_string($user)) {
             return $user;
         }
-        echo $AppId;
         $res = $this->_Api->decode_result(
             $this->_Api->execute(
                 file_get_contents(__DIR__ . "/sql/update_app.sql"),

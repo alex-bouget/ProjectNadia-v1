@@ -18,7 +18,6 @@ $api = new AppApi();
     include __DIR__ . "/../test_account.php";
     include __DIR__ . "/../test_admin.php";
     $appData = json_decode($api->updateApp($_POST["AppViewer"], $_POST["AppName"], $_POST["AppDesc"], $_POST["Token"], $_POST["AToken"]), true);
-    echo json_encode($appData);
     ?>
     <script>
         formLauncher(

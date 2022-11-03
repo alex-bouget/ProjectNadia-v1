@@ -10,14 +10,14 @@ $api2 = new AccountAPI();
 
 <head>
     <title>Nadia-Root</title>
-    <script src="../form_launcher.js"></script>
+    <script src="../../form_launcher.js"></script>
 </head>
 
 <body>
     <?php
-    include __DIR__ . "/../test_token.php";
-    include __DIR__ . "/../test_account.php";
-    include __DIR__ . "/../test_admin.php";
+    include __DIR__ . "/../../test_token.php";
+    include __DIR__ . "/../../test_account.php";
+    include __DIR__ . "/../../test_admin.php";
     if ($_POST["pass"] != $_POST["pass2"]) { ?>
         <script>
             formLauncher(

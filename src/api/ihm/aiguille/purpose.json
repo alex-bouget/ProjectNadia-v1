@@ -1,24 +1,25 @@
 {
     "Connection": {
-        "Redirect": "../connection/"
+        "Redirect": "../purpose/connection/"
     },
     "PasswordChange": {
-        "Redirect": "../changePasswd/",
+        "Redirect": "../purpose/changePasswd/",
         "Require": [
             "AdminApp"
         ]
     },
     "AllMyApp": {
-        "Redirect": "../allMyApp/",
+        "Redirect": "../purpose/allMyApp/",
         "Require": [
             "AdminApp"
         ]
     },
     "CreateApp": {
-        "Redirect": "../createApp/",
+        "Redirect": "../purpose/createApp/",
         "Require": [
             "AdminApp"
         ]
     },
-    "PasswordReset": {}
+    "PasswordReset": {},
+    "ChangeImg": {}
 }

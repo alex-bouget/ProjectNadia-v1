@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 error_reporting(E_ERROR);
-include __DIR__ . "/../../ihmTheme/themeLoader.php";
+include __DIR__ . "/../../../ihmTheme/themeLoader.php";
 ?>
 <html>
 
@@ -12,14 +12,14 @@ include __DIR__ . "/../../ihmTheme/themeLoader.php";
         ?>
     </style>
     <title>Nadia-Root</title>
-    <script src="../form_launcher.js"></script>
+    <script src="../../form_launcher.js"></script>
 </head>
 
 <body>
     <?php
-    include __DIR__ . "/../test_token.php";
-    include __DIR__ . "/../test_account.php";
-    include __DIR__ . "/../test_admin.php";
+    include __DIR__ . "/../../test_token.php";
+    include __DIR__ . "/../../test_account.php";
+    include __DIR__ . "/../../test_admin.php";
     if (isset($_POST["Error"])) {
         echo "<h1>" . $_POST["Error"] . "</h1>";
     }

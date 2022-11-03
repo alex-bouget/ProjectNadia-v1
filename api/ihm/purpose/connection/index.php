@@ -1,9 +1,9 @@
 <?php
 
 error_reporting(E_ERROR);
-include_once __DIR__ . "/../../app/AppApi.php";
-include_once __DIR__ . "/../../client/AccountAPI.php";
-include __DIR__ . "/../../ihmTheme/themeLoader.php";
+include_once __DIR__ . "/../../../app/AppApi.php";
+include_once __DIR__ . "/../../../client/AccountAPI.php";
+include __DIR__ . "/../../../ihmTheme/themeLoader.php";
 
 $api = new AppApi();
 $api2 = new AccountAPI();
@@ -19,13 +19,13 @@ $tokenGood = isset(json_decode($api->testTempToken($_POST["APPID"], $_POST["temp
         ?>
     </style>
     <title>Nadia-App Authorize</title>
-    <script src="../form_launcher.js"></script>
+    <script src="../../form_launcher.js"></script>
 </head>
 
 <body>
     <?php
-    include __DIR__ . "/../test_token.php";
-    include __DIR__ . "/../test_account.php";
+    include __DIR__ . "/../../test_token.php";
+    include __DIR__ . "/../../test_account.php";
 
     $result = json_decode($api->have_account($_POST["Token"], $_POST["APPID"]), true);
     header_construct($_POST["APPID"]);
